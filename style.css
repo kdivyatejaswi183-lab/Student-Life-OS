@@ -1,0 +1,2143 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    overflow-y:auto;
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+.desktop {
+    width: 100vw;
+    min-height: 100vh;
+
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: background-image 0.5s ease;
+    padding-bottom: 80px;
+}
+
+
+/* =====================================================
+   DESKTOP ICONS
+===================================================== */
+
+.desktop-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 1200px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.app-icon {
+    width: 90px;
+    padding: 8px;
+
+    text-align: center;
+    color: white;
+
+    border-radius: 8px;
+    cursor: grab;
+    user-select: none;
+    position : absolute;
+    pointer-events: auto;
+
+    transition:
+     background 0.2s, 
+     transform 0.2s;
+}
+
+.app-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.03);
+}
+
+.app-icon:active {
+    background: rgba(255, 255, 255, 0.25);
+     cursor:grabbing;
+}
+
+.app-icon.dragging {
+    cursor:grabbing;
+    transform: scale(1.05);
+    z-index:1000;
+}
+.icon {
+    font-size: 38px;
+    margin-bottom: 5px;
+
+    filter: drop-shadow(
+        0 3px 5px rgba(0, 0, 0, 0.3)
+    );
+}
+
+.app-icon span {
+    display: block;
+    font-size: 13px;
+    color: white;
+
+    text-shadow: 0 1px 3px black;
+}
+
+
+/* =====================================================
+   APPLICATION WINDOWS
+===================================================== */
+
+
+@keyframes windowOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.app-window {
+    display: none;
+
+    position: absolute;
+
+    top: 100px;
+    left: 300px;
+
+    width: 550px;
+    min-height: 350px;
+
+    max-height: calc(100vh - 130px);
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45);
+
+    z-index: 10;
+
+    animation: windowOpen 0.2s ease;
+}
+
+.window-header {
+    height: 48px;
+
+    background: #20232a;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 12px;
+
+    font-weight: bold;
+
+    cursor: move;
+    user-select: none;
+}
+
+.window-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.window-buttons button {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: white;
+
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.window-buttons button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+/* =====================================================
+   WINDOW CONTENT
+===================================================== */
+.window-content {
+    padding: 22px;
+
+    color: #222;
+
+    overflow-y: auto;
+
+    max-height: calc(100vh - 180px);
+}
+
+.window-content h2 {
+    margin-bottom: 15px;
+    color: #20232a;
+}
+
+.window-content input,
+.window-content select,
+.window-content textarea {
+    width: 100%;
+
+    padding: 11px;
+    margin-bottom: 10px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+
+    font-size: 14px;
+    outline: none;
+}
+
+.window-content input:focus,
+.window-content select:focus,
+.window-content textarea:focus {
+    border-color: #4f46e5;
+
+    box-shadow:
+        0 0 0 2px rgba(79, 70, 229, 0.12);
+}
+
+
+/* =====================================================
+   NOTES
+===================================================== */
+
+#notesText {
+    width: 100%;
+    height: 230px;
+
+    padding: 12px;
+    resize: none;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+     box-sizing: border-box;
+     outline: none;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-btn,
+.secondary-btn {
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    margin: 5px 5px 5px 0;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.15s,
+        background 0.2s;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 14px;
+
+    background: linear-gradient(135deg, #4f46e5, #2563eb);
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+.primary-btn:hover {
+    background: #3730a3;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background: #e5e7eb;
+    color: #222;
+}
+
+.secondary-btn:hover {
+    background: #d1d5db;
+}
+
+#saveMessage {
+    margin-top: 10px;
+    color: #16a34a;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+.calendar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.calendar-top h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.calendar-top button {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #4f46e5;
+    color: white;
+
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.calendar-top button:hover {
+    background: #3730a3;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 5px;
+    margin-bottom: 8px;
+
+    text-align: center;
+
+    font-weight: bold;
+    color: #555;
+
+    font-size: 13px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-date {
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+    cursor: pointer;
+
+    transition: background 0.2s;
+}
+
+.calendar-date:hover {
+    background: #e5e7eb;
+}
+
+.calendar-date.today {
+    background: #4f46e5;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   ASSIGNMENTS
+===================================================== */
+
+#assignmentList {
+    margin-top: 20px;
+}
+
+.assignment-item {
+    padding: 12px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    border-left: 4px solid #4f46e5;
+}
+
+.assignment-item h3 {
+    margin-bottom: 5px;
+}
+
+.assignment-item p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.assignment-item button {
+    padding: 6px 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    background: #ef4444;
+    color: white;
+}
+
+
+/* =====================================================
+   ATTENDANCE
+===================================================== */
+
+#attendanceList {
+    margin-top: 20px;
+}
+
+.attendance-item {
+    padding: 15px;
+    margin-bottom: 10px;
+
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.attendance-item h3 {
+    margin-bottom: 8px;
+}
+
+.attendance-percent {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+.attendance-warning {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.attendance-good {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+.calculator-window {
+    width: 330px;
+    min-height: auto;
+}
+
+.calculator {
+    padding: 15px;
+    background: #111827;
+}
+
+#calculatorDisplay {
+    width: 100%;
+    height: 65px;
+
+    margin-bottom: 12px;
+    padding: 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #1f2937;
+    color: white;
+
+    font-size: 28px;
+    text-align: right;
+
+    outline: none;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
+
+.calculator-buttons button {
+    height: 50px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #374151;
+    color: white;
+
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.calculator-buttons button:hover {
+    background: #4b5563;
+}
+
+.calculator-buttons .equal-btn {
+    grid-column: span 2;
+    background: #4f46e5;
+}
+
+.calculator-buttons .equal-btn:hover {
+    background: #3730a3;
+}
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+.music-player {
+    text-align: center;
+}
+
+.album-icon {
+    width: 130px;
+    height: 130px;
+
+    margin: 10px auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #9333ea
+        );
+
+    font-size: 65px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.music-player audio {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.music-note {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* =====================================================
+   FILE EXPLORER
+===================================================== */
+
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.file-item {
+    padding: 20px 10px;
+
+    text-align: center;
+
+    background: #f3f4f6;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.file-item:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.file-item span {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+.notification-item {
+    padding: 15px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    border-left: 4px solid #4f46e5;
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin: 15px 0 25px;
+}
+
+.theme-buttons button {
+    padding: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    color: white;
+    font-weight: bold;
+}
+
+.theme-buttons button:nth-child(1) {
+    background: #2563eb;
+}
+
+.theme-buttons button:nth-child(2) {
+    background: #7c3aed;
+}
+
+.theme-buttons button:nth-child(3) {
+    background: #111827;
+}
+
+.theme-buttons button:nth-child(4) {
+    background: #15803d;
+}
+
+.window-content hr {
+    border: none;
+
+    border-top: 1px solid #ddd;
+
+    margin: 20px 0;
+}
+
+
+/* =====================================================
+   RECYCLE BIN
+===================================================== */
+
+.empty-bin {
+    padding: 30px;
+
+    text-align: center;
+
+    color: #777;
+
+    background: #f3f4f6;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   START MENU
+===================================================== */
+
+.start-menu {
+    display: none;
+
+    position: absolute;
+
+    left: 12px;
+    bottom: 70px;
+
+    width: 350px;
+    max-height: 550px;
+
+    background: rgba(25, 28, 35, 0.96);
+
+    backdrop-filter: blur(20px);
+
+    color: white;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    z-index: 100;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+
+    animation: menuOpen 0.2s ease;
+}
+
+@keyframes menuOpen {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.start-header {
+    margin-bottom: 15px;
+}
+
+.start-header h2 {
+    margin-bottom: 5px;
+}
+
+.start-header p {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.start-search {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 15px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-radius: 20px;
+
+    color: #bbb;
+
+    margin-bottom: 15px;
+}
+
+.start-apps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.start-apps button {
+    padding: 12px 8px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    font-size: 13px;
+}
+
+.start-apps button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.start-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-footer button {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    padding: 8px;
+
+    cursor: pointer;
+
+    border-radius: 6px;
+}
+
+.start-footer button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* =====================================================
+   TASKBAR
+===================================================== */
+
+.taskbar {
+    position: fixed;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 7px 12px;
+
+    background: rgba(15, 18, 25, 0.88);
+
+    backdrop-filter: blur(18px);
+
+    color: white;
+
+    z-index: 9999;
+}
+
+
+/* =====================================================
+   START BUTTON
+===================================================== */
+
+.start-button {
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+.start-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search {
+    width: 220px;
+    height: 40px;
+
+    margin-left: 10px;
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: #ccc;
+
+    cursor: pointer;
+}
+
+.search:hover {
+    background: rgba(255, 255, 255, 0.17);
+}
+
+
+/* =====================================================
+   RUNNING APPS
+===================================================== */
+
+.running-apps {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.running-app {
+    height: 40px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+.running-app:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+
+/* =====================================================
+   TASKBAR SPACE
+===================================================== */
+
+.taskbar-space {
+    flex: 1;
+}
+
+
+/* =====================================================
+   SYSTEM ICONS
+===================================================== */
+
+.system-icons {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    font-size: 14px;
+}
+
+.system-icons span {
+    cursor: pointer;
+}
+
+.system-icons span:hover {
+    opacity: 0.7;
+}
+
+#clock {
+    min-width: 75px;
+    text-align: center;
+}
+
+
+/* =====================================================
+   THEMES
+===================================================== */
+
+.desktop.theme-blue {
+    background:
+        linear-gradient(
+            135deg,
+            #141e30,
+            #243b55
+        );
+}
+
+.desktop.theme-purple {
+    background:
+        linear-gradient(
+            135deg,
+            #20002c,
+            #cbb4d4
+        );
+}
+
+.desktop.theme-dark {
+    background:
+        linear-gradient(
+            135deg,
+            #000000,
+            #1f2937
+        );
+}
+
+.desktop.theme-green {
+    background:
+        linear-gradient(
+            135deg,
+            #134e5e,
+            #71b280
+        );
+}
+
+/* =====================================================
+   WELCOME SCREEN
+===================================================== */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(10, 20, 40, 0.65),
+            rgba(10, 20, 40, 0.65)
+        ),
+        url("wallpaper/welcome.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    text-align: center;
+
+    z-index: 9999;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+
+/* =====================================================
+   WELCOME CONTENT
+===================================================== */
+
+.welcome-content {
+    width: 90%;
+    max-width: 650px;
+    padding: 40px;
+
+    text-align: center;
+    color: white;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    animation: welcomeAppear 1s ease;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.welcome-logo {
+    font-size: 80px;
+    margin-bottom: 20px;
+
+    animation:
+        logoFloat 3s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.welcome-content h1 {
+    font-size: 52px;
+
+    margin: 0 0 15px;
+
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   SUBTITLE
+===================================================== */
+
+.welcome-subtitle {
+    font-size: 22px;
+
+    margin-bottom: 15px;
+
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.welcome-description {
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    opacity: 0.75;
+}
+/* =====================================================
+   PAGE 1 - MODERN GET STARTED BUTTON
+===================================================== */
+
+.get-started-btn {
+
+    padding: 16px 42px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #4f46e5;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.get-started-btn:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    background:
+        #f1f5ff;
+
+    box-shadow:
+        0 18px 40px
+        rgba(0, 0, 0, 0.35);
+}
+
+.get-started-btn:active {
+
+    transform:
+        scale(0.96);
+}
+
+/* Remove old arrow animation */
+
+.get-started-btn::after {
+
+    content: " →";
+
+    margin-left: 8px;
+
+    font-size: 18px;
+}
+
+
+
+/* =====================================================
+   HIDE WELCOME SCREEN
+===================================================== */
+
+.welcome-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ACCOUNT SCREEN BACKGROUND */
+.account-screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            rgba(10, 20, 40, 0.65),
+            rgba(10, 20, 40, 0.65)
+        ),
+        url("wallpaper/welcome.jpg") center/cover no-repeat;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes welcomeAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+/* =====================================================
+   PAGE 2 - MODERN ACCOUNT BUTTONS
+===================================================== */
+
+.account-btn {
+
+    width: 100%;
+
+    min-height: 58px;
+
+    margin-top: 14px;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* CREATE ACCOUNT BUTTON */
+
+.account-btn:not(.login-option) {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #e0e7ff
+        );
+
+    color:
+        #312e81;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+}
+
+.account-btn:not(.login-option):hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    background:
+        white;
+
+    box-shadow:
+        0 18px 35px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+/* LOGIN BUTTON */
+
+.account-btn.login-option {
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.5);
+
+    background:
+        transparent;
+
+    color:
+        white;
+}
+
+.account-btn.login-option:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* CLICK EFFECT */
+
+.account-btn:active {
+
+    transform:
+        scale(0.97);
+}
+
+
+/* =====================================================
+   CREATE ACCOUNT BUTTON
+===================================================== */
+
+.account-btn:not(.login-option) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e8f0ff
+    );
+
+    color: #243b55;
+}
+
+.account-btn:not(.login-option):hover {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f3f7ff
+    );
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.account-btn.login-option {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.account-btn.login-option:hover {
+    background: rgba(255, 255, 255, 0.22);
+
+    border-color: rgba(255, 255, 255, 0.55);
+
+    color: white;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.account-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.login-option {
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* =====================================================
+   STUDENT PROFILE - CREATE ACCOUNT PAGE
+===================================================== */
+
+.profile-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        rgba(10, 20, 35, 0.55),
+     rgba(10, 20, 35, 0.65)), 
+     url("wallpaper/welcome.jpg") 
+     center/cover no-repeat;
+    color: white;
+
+    z-index: 9997;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+
+    padding: 20px;
+}
+
+.profile-screen.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.profile-card {
+    width: 90%;
+    max-width: 450px;
+
+    padding: 40px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+
+    text-align: center;
+
+    animation: cardAppear 0.5s ease;
+}
+
+.profile-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.profile-card h1 {
+    margin-bottom: 8px;
+    font-size: 36px;
+}
+
+.profile-card p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.profile-card label {
+    display: block;
+
+    text-align: left;
+
+    margin: 15px 0 7px;
+
+    font-weight: 600;
+}
+
+.profile-card input,
+.profile-card select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    outline: none;
+}
+
+.continue-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: white;
+
+    color: #243b55;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =====================================================
+   PASSWORD SCREEN - CREATE ACCOUNT
+===================================================== */
+
+.password-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    background:
+    linear-gradient(
+        rgba(10, 20, 40, 0.65),
+        rgba(10, 20, 40, 0.65)
+    ),
+    url("wallpaper/welcome.jpg") center/cover no-repeat;
+
+    color: white;
+
+    z-index: 9996;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+
+    padding: 20px;
+}
+
+.password-screen.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.password-card {
+    width: 90%;
+    max-width: 450px;
+
+    padding: 45px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4);
+
+    animation: passwordAppear 0.5s ease;
+}
+
+.password-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.password-card h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.password-card p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 25px;
+}
+
+.password-card label {
+    display: block;
+    text-align: left;
+
+    margin: 15px 0 7px;
+
+    color: white;
+    font-weight: 600;
+}
+
+.password-card input {
+    width: 100%;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 9px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.password-card input:focus {
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes passwordAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.password-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+
+.password-card h1 {
+    margin-bottom: 8px;
+    font-size: 32px;
+}
+
+.password-card p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.password-card label {
+    display: block;
+
+    text-align: left;
+
+    margin: 15px 0 7px;
+
+    font-weight: 600;
+}
+
+.password-card input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    outline: none;
+}
+
+
+/* =====================================================
+   LOGIN SCREEN
+===================================================== */
+
+.login-screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            rgba(10,20,40,0.65),
+            rgba(10,20,40,0.65)
+        ),
+        url("wallpaper/welcome.jpg");
+
+    color: white;
+
+    z-index: 9995;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+
+    padding: 20px;
+}
+
+.login-screen.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.login-card {
+    width: 90%;
+    max-width: 430px;
+    padding: 40px;
+
+    color: white;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    animation: cardAppear 0.5s ease;
+}
+/* LOGIN OPTIONS */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.login-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.login-options input {
+    accent-color: #60a5fa;
+}
+
+.login-options a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+/* LOGIN SUBTITLE */
+.login-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 12px 0 25px;
+}
+/* LOGIN FOOTER */
+.robot-footer {
+    margin-top: 22px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.robot-footer a {
+    color: #93c5fd;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.robot-footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+.login-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.login-card h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.login-card p {
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.login-card label {
+    display: block;
+
+    text-align: left;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 8px 0;
+
+    box-sizing: border-box;
+
+    color: white;
+    font-size: 15px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.login-card input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.login-card input:focus {
+    border-color: #93c5fd;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.login-card .continue-btn {
+    margin-top: 20px;
+}
+
+.login-error {
+    color: #ffb3b3;
+
+    min-height: 20px;
+
+    margin-top: 15px;
+    
+    font-size: 14px;
+    
+    font-weight: 500;
+    
+    line-height: 1.5;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   MAXIMIZED WINDOW
+===================================================== */
+
+.app-window.maximized {
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100vw !important;
+
+    height: calc(100vh - 60px) !important;
+
+    max-height: none !important;
+
+    border-radius: 0 !important;
+}
+
+
+/* =====================================================
+   WALLPAPER OPTIONS
+===================================================== */
+
+.wallpaper-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+.wallpaper-option {
+    height: 100px;
+
+    border: none;
+    border-radius: 12px;
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.wallpaper-option span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.wallpaper-option:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.wallpaper-space {
+    background:
+        linear-gradient(
+            135deg,
+            #020024,
+            #090979,
+            #00d4ff
+        );
+}
+
+.wallpaper-sunset {
+    background:
+        linear-gradient(
+            135deg,
+            #ff512f,
+            #dd2476
+        );
+}
+
+.wallpaper-nature {
+    background:
+        linear-gradient(
+            135deg,
+            #134e5e,
+            #71b280
+        );
+}
+
+.wallpaper-ocean {
+    background:
+        linear-gradient(
+            135deg,
+            #2193b0,
+            #6dd5ed
+        );
+}
+
+.wallpaper-dark {
+    background:
+        linear-gradient(
+            135deg,
+            #000000,
+            #1f2937
+        );
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .app-window {
+        left: 5%;
+        top: 60px;
+        width: 90%;
+        max-height: calc(100vh - 130px);
+    }
+
+    .search {
+        width: 120px;
+    }
+
+    .system-icons {
+        gap: 6px;
+    }
+
+    .desktop-icons {
+        gap: 5px;
+    }
+
+    .start-menu {
+        width: 90%;
+        left: 5%;
+    }
+
+    .welcome-content {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .welcome-content h1 {
+        font-size: 30px;
+    }
+
+    .welcome-subtitle {
+        font-size: 16px;
+    }
+
+    .welcome-description {
+        font-size: 14px;
+    }
+
+    .account-card,
+    .profile-card,
+    .password-card,
+    .login-card {
+        width: 90%;
+        padding: 25px 20px;
+    }
+
+    .login-options {
+        flex-wrap: wrap;
+        font-size: 13px;
+    }
+
+    .login-card input {
+        font-size: 14px;
+    }
+}

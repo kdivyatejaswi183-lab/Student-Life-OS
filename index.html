@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Life OS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     WELCOME SCREEN
+===================================================== -->
+
+<div class="welcome-screen" id="welcomeScreen">
+
+    <div class="welcome-content">
+
+        <div class="welcome-icon">🎓</div>
+
+        <h1>Student Life OS</h1>
+
+        <p>Your Personal Student Workspace</p>
+
+        <button class="primary-btn" onclick="startStudentOS()">
+            Get Started
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ACCOUNT SCREEN
+===================================================== -->
+
+<div class="account-screen" id="accountScreen">
+
+    <div class="account-content">
+
+        <h1>Welcome to Student Life OS</h1>
+
+        <p>Choose an option to continue</p>
+
+        <button class="primary-btn" onclick="createNewAccount()">
+            🆕 Create New Account
+        </button>
+
+        <button class="secondary-btn" onclick="showLoginScreen()">
+            🔐 Login
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PROFILE SCREEN
+===================================================== -->
+
+<div class="profile-screen" id="profileScreen">
+
+    <div class="account-content">
+
+        <h1>👤 Student Profile</h1>
+
+        <p>Enter your details</p>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter your name"
+        >
+        <input
+    type="email"
+    id="studentEmail"
+    placeholder="Enter your email address"
+>
+        <select id="studentCourse">
+
+            <option value="">
+                Select Course
+            </option>
+
+            <option value="B.Tech CSD">
+                B.Tech CSD
+            </option>
+
+            <option value="B.Tech CSE">
+                B.Tech CSE
+            </option>
+
+            <option value="B.Tech Data Science">
+                B.Tech Data Science
+            </option>
+
+            <option value="B.Tech AI & ML">
+                B.Tech AI & ML
+            </option>
+
+        </select>
+
+        <button
+            class="primary-btn"
+            onclick="showPasswordScreen()"
+        >
+            Continue →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PASSWORD SCREEN
+===================================================== -->
+
+<div class="profile-screen" id="passwordScreen">
+
+    <div class="account-content">
+
+        <h1>🔐 Create Password</h1>
+
+        <p>Create a password for your account</p>
+
+        <input
+            type="password"
+            id="studentPassword"
+            placeholder="Enter password"
+        >
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm password"
+        >
+
+        <button
+            class="primary-btn"
+            onclick="saveStudentProfile()"
+        >
+            Create Account
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ROBOT STYLE LOGIN SCREEN -->
+
+ <div class="login-screen" id="loginScreen">
+
+    <div class="welcome-content login-card">
+
+        <div class="robot-light">
+            <div class="robot-antenna"></div>
+
+            <div class="robot-head">
+                <div class="robot-ear left-ear"></div>
+                <div class="robot-ear right-ear"></div>
+
+                <div class="robot-eyes">
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="robot-mouth"></div>
+            </div>
+
+            <div class="robot-body">
+                <div class="robot-light"></div>
+            </div>
+        </div>
+
+           <h1>Sign in to Student Life OS</h1>
+
+        <p class="login-subtitle" id="loginWelcome">
+    Welcome back! Sign in to access your personal workspace.
+</p>
+
+        <p class="robot-description">
+            Enter your password to continue.
+        </p>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            autocomplete="username"
+        >   
+         <input
+           type="password"
+           id="loginPassword"
+           placeholder="Enter your password"
+            autocomplete="current-password"
+        >
+        <div class="login-options">
+         <label>
+        <input type="checkbox" id="rememberMe">
+        Remember me
+         </label>
+         <a href="#" onclick="return false;">Forgot password?</a> 
+          </div>
+        <p id="loginError" class="error-message"></p>
+
+        <button
+            class="robot-primary-btn"
+            onclick="loginStudent()"
+        >
+            Login →
+        </button>
+
+         <p class="robot-footer">
+    Don't have an account?
+    <a href="#" onclick="returnToAccount(); return false;">
+        Create account
+    </a>
+</p>
+    </div>
+</div>
+
+<!-- =====================================================
+     DESKTOP
+===================================================== -->
+
+<div class="desktop" id="desktop">
+
+    <!-- =================================================
+         DESKTOP ICONS
+    ================================================== -->
+
+    <div class="desktop-icons">
+
+        <div class="app-icon"
+             ondblclick="openApp('notesWindow')">
+            <div class="icon">📝</div>
+            <span>Notes</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('calendarWindow')">
+            <div class="icon">📅</div>
+            <span>Calendar</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('assignmentWindow')">
+            <div class="icon">📚</div>
+            <span>Assignments</span>
+        </div> 
+
+        <div class="app-icon"
+             ondblclick="openApp('attendanceWindow')">
+            <div class="icon">📊</div>
+            <span>Attendance</span>
+        </div>0
+
+        <div class="app-icon"
+             ondblclick="openApp('calculatorWindow')">
+            <div class="icon">🧮</div>
+            <span>Calculator</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('musicWindow')">
+            <div class="icon">🎵</div>
+            <span>Music</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('fileWindow')">
+            <div class="icon">📂</div>
+            <span>Files</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('notificationWindow')">
+            <div class="icon">🔔</div>
+            <span>Notifications</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('settingsWindow')">
+            <div class="icon">⚙️</div>
+            <span>Settings</span>
+        </div>
+
+        <div class="app-icon"
+             ondblclick="openApp('recycleWindow')">
+            <div class="icon">🗑️</div>
+            <span>Recycle Bin</span>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         NOTES
+    ================================================== -->
+
+    <div class="app-window" id="notesWindow">
+
+        <div class="window-header">
+
+            <span>📝 Notes</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('notesWindow')">−</button>
+
+                <button onclick="maximizeApp('notesWindow')">□</button>
+
+                <button onclick="closeApp('notesWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>My Notes</h2>
+
+            <textarea
+                id="notesText"
+                placeholder="Write your notes here..."
+            ></textarea>
+
+            <button
+                class="primary-btn"
+                onclick="saveNotes()">
+                Save Note
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="clearNotes()">
+                Clear
+            </button>
+
+            <p id="saveMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CALENDAR
+    ================================================== -->
+
+    <div class="app-window" id="calendarWindow">
+
+        <div class="window-header">
+
+            <span>📅 Calendar</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('calendarWindow')">−</button>
+
+                <button onclick="maximizeApp('calendarWindow')">□</button>
+
+                <button onclick="closeApp('calendarWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <div class="calendar-top">
+
+                <button onclick="previousMonth()">◀</button>
+
+                <h2 id="monthYear"></h2>
+
+                <button onclick="nextMonth()">▶</button>
+
+            </div>
+
+            <div class="calendar-days">
+
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+
+            </div>
+
+            <div
+                class="calendar-grid"
+                id="calendarGrid">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ASSIGNMENTS
+    ================================================== -->
+
+    <div class="app-window" id="assignmentWindow">
+
+        <div class="window-header">
+
+            <span>📚 Assignments</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('assignmentWindow')">−</button>
+
+                <button onclick="maximizeApp('assignmentWindow')">□</button>
+
+                <button onclick="closeApp('assignmentWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>Assignment Manager</h2>
+
+            <input
+                type="text"
+                id="assignmentName"
+                placeholder="Assignment name"
+            >
+
+            <input
+                type="text"
+                id="assignmentSubject"
+                placeholder="Subject"
+            >
+
+            <input
+                type="date"
+                id="assignmentDate"
+            >
+
+            <select id="assignmentPriority">
+
+                <option value="Low">
+                    Low Priority
+                </option>
+
+                <option value="Medium">
+                    Medium Priority
+                </option>
+
+                <option value="High">
+                    High Priority
+                </option>
+
+            </select>
+
+            <button
+                class="primary-btn"
+                onclick="addAssignment()">
+                Add Assignment
+            </button>
+
+            <div id="assignmentList"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ATTENDANCE
+    ================================================== -->
+
+    <div class="app-window" id="attendanceWindow">
+
+        <div class="window-header">
+
+            <span>📊 Attendance</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('attendanceWindow')">−</button>
+
+                <button onclick="maximizeApp('attendanceWindow')">□</button>
+
+                <button onclick="closeApp('attendanceWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>Attendance Tracker</h2>
+
+            <input
+                type="text"
+                id="subjectName"
+                placeholder="Subject"
+            >
+
+            <input
+                type="number"
+                id="presentClasses"
+                placeholder="Present classes"
+                min="0"
+            >
+
+            <input
+                type="number"
+                id="totalClasses"
+                placeholder="Total classes"
+                min="1"
+            >
+
+            <button
+                class="primary-btn"
+                onclick="addAttendance()">
+                Add Subject
+            </button>
+
+            <div id="attendanceList"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CALCULATOR
+    ================================================== -->
+
+    <div
+        class="app-window calculator-window"
+        id="calculatorWindow">
+
+        <div class="window-header">
+
+            <span>🧮 Calculator</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('calculatorWindow')">−</button>
+
+                <!-- FIXED: calculatorWindow instead of calendarWindow -->
+                <button onclick="maximizeApp('calculatorWindow')">□</button>
+
+                <button onclick="closeApp('calculatorWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="calculator">
+
+            <input
+                type="text"
+                id="calculatorDisplay"
+                readonly
+            >
+
+            <div class="calculator-buttons">
+
+                <button onclick="clearCalculator()">C</button>
+
+                <button onclick="deleteCalculator()">⌫</button>
+
+                <button onclick="calculatorInput('%')">%</button>
+
+                <button onclick="calculatorInput('/')">÷</button>
+
+                <button onclick="calculatorInput('7')">7</button>
+                <button onclick="calculatorInput('8')">8</button>
+                <button onclick="calculatorInput('9')">9</button>
+                <button onclick="calculatorInput('*')">×</button>
+
+                <button onclick="calculatorInput('4')">4</button>
+                <button onclick="calculatorInput('5')">5</button>
+                <button onclick="calculatorInput('6')">6</button>
+                <button onclick="calculatorInput('-')">−</button>
+
+                <button onclick="calculatorInput('1')">1</button>
+                <button onclick="calculatorInput('2')">2</button>
+                <button onclick="calculatorInput('3')">3</button>
+                <button onclick="calculatorInput('+')">+</button>
+
+                <button onclick="calculatorInput('0')">0</button>
+
+                <button onclick="calculatorInput('.')">.</button>
+
+                <button
+                    class="equal-btn"
+                    onclick="calculateResult()">
+                    =
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MUSIC
+    ================================================== -->
+
+    <div class="app-window" id="musicWindow">
+
+        <div class="window-header">
+
+            <span>🎵 Music Player</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('musicWindow')">−</button>
+
+                <button onclick="maximizeApp('musicWindow')">□</button>
+
+                <button onclick="closeApp('musicWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content music-player">
+
+            <div class="album-icon">
+                🎵
+            </div>
+
+            <h2>
+                Student Focus Music
+            </h2>
+
+            <p>
+                Your study playlist
+            </p>
+
+            <audio
+                id="audioPlayer"
+                controls>
+            </audio>
+
+            <p class="music-note">
+                Add your own audio files later.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FILE EXPLORER
+    ================================================== -->
+
+    <div class="app-window" id="fileWindow">
+
+        <div class="window-header">
+
+            <span>📂 File Explorer</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('fileWindow')">−</button>
+
+                <button onclick="maximizeApp('fileWindow')">□</button>
+
+                <button onclick="closeApp('fileWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>My Files</h2>
+
+            <div class="file-grid">
+
+                <div class="file-item">
+                    📁
+                    <span>Documents</span>
+                </div>
+
+                <div class="file-item">
+                    📁
+                    <span>Projects</span>
+                </div>
+
+                <div class="file-item">
+                    📁
+                    <span>College</span>
+                </div>
+
+                <div class="file-item">
+                    📄
+                    <span>Notes.txt</span>
+                </div>
+
+                <div class="file-item">
+                    📄
+                    <span>Assignments.pdf</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         NOTIFICATIONS
+    ================================================== -->
+
+    <div class="app-window" id="notificationWindow">
+
+        <div class="window-header">
+
+            <span>🔔 Notifications</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('notificationWindow')">−</button>
+
+                <button onclick="maximizeApp('notificationWindow')">□</button>
+
+                <button onclick="closeApp('notificationWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>Notification Center</h2>
+
+            <div class="notification-item">
+                📚 Check your assignments.
+            </div>
+
+            <div class="notification-item">
+                📅 Don't forget your upcoming classes.
+            </div>
+
+            <div class="notification-item">
+                📊 Check your attendance.
+            </div>
+              <button class="clear-notifications-btn" onclick="clearNotifications()">
+                Clear All
+                </button>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SETTINGS
+    ================================================== -->
+
+    <div class="app-window" id="settingsWindow">
+
+        <div class="window-header">
+
+            <span>⚙️ Settings</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('settingsWindow')">−</button>
+
+                <button onclick="maximizeApp('settingsWindow')">□</button>
+
+                <button onclick="closeApp('settingsWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>Personalization</h2>
+
+            <p>Choose wallpaper:</p>
+
+            <div class="theme-buttons">
+
+                <button onclick="changeWallpaper('nature.jpg')">
+                    🌿 Nature
+                </button>
+
+                <button onclick="changeWallpaper('space.jpg')">
+                    🚀 Space
+                </button>
+
+                <button onclick="changeWallpaper('night.jpg')">
+                    🌃 Night
+                </button>
+
+                <button onclick="changeWallpaper('mountain.jpg')">
+                    🏔️ Mountain
+                </button>
+
+                <button onclick="changeWallpaper('ocean.jpg')">
+                    🌊 Ocean
+                </button>
+
+                <button onclick="changeWallpaper('sunset.jpg')">
+                    🌅 Sunset
+                </button>
+
+            </div>
+
+            <hr>
+
+            <button
+                class="primary-btn"
+                onclick="resetSettings()">
+                Reset Settings
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RECYCLE BIN
+    ================================================== -->
+
+    <div class="app-window" id="recycleWindow">
+
+        <div class="window-header">
+
+            <span>🗑️ Recycle Bin</span>
+
+            <div class="window-buttons">
+
+                <button onclick="minimizeApp('recycleWindow')">−</button>
+
+                <button onclick="maximizeApp('recycleWindow')">□</button>
+
+                <button onclick="closeApp('recycleWindow')">×</button>
+
+            </div>
+
+        </div>
+
+        <div class="window-content">
+
+            <h2>Recycle Bin</h2>
+
+            <p class="empty-bin">
+                🗑️ Recycle Bin is empty.
+            </p>
+
+            <button
+                class="secondary-btn"
+                onclick="emptyRecycleBin()">
+                Empty Recycle Bin
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         START MENU
+    ================================================== -->
+
+    <div
+        class="start-menu"
+        id="startMenu">
+
+        <div class="start-header">
+
+            <h2>Student Life OS</h2>
+
+            <p>Your Student Workspace</p>
+
+        </div>
+
+        <div
+            class="start-search"
+            onclick="openSearch()">
+
+            🔍 Search apps...
+
+        </div>
+
+        <div class="start-apps">
+
+            <button onclick="openApp('notesWindow')">
+                📝 Notes
+            </button>
+
+            <button onclick="openApp('calendarWindow')">
+                📅 Calendar
+            </button>
+
+            <button onclick="openApp('assignmentWindow')">
+                📚 Assignments
+            </button>
+
+            <button onclick="openApp('attendanceWindow')">
+                📊 Attendance
+            </button>
+
+            <button onclick="openApp('calculatorWindow')">
+                🧮 Calculator
+            </button>
+
+            <button onclick="openApp('musicWindow')">
+                🎵 Music
+            </button>
+
+            <button onclick="openApp('fileWindow')">
+                📂 Files
+            </button>
+
+            <button onclick="openApp('notificationWindow')">
+                🔔 Notifications
+            </button>
+
+            <button onclick="openApp('settingsWindow')">
+                ⚙️ Settings
+            </button>
+
+            <!-- FIXED -->
+            <button onclick="openApp('recycleWindow')">
+                🗑️ Recycle Bin
+            </button>
+
+        </div>
+
+        <div class="start-footer">
+
+            <button onclick="showProfile()">
+                👤 Student
+            </button>
+
+            <button onclick="logoutStudent()">
+                🚪 Logout
+            </button>
+
+            <button onclick="shutdown()">
+                ⏻
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TASKBAR
+    ================================================== -->
+
+    <div class="taskbar">
+
+        <button
+            class="start-button"
+            onclick="toggleStartMenu()">
+            ⊞
+        </button>
+
+        <div
+            class="search"
+            onclick="openSearch()">
+
+            🔍
+            <span>Search</span>
+
+        </div>
+
+        <div
+            class="running-apps"
+            id="runningApps">
+        </div>
+
+        <div class="taskbar-space"></div>
+
+        <div class="system-icons">
+
+            <span onclick="showWifi()">
+                📶
+            </span>
+
+            <span onclick="showVolume()">
+                🔊
+            </span>
+
+            <span onclick="showBattery()">
+                🔋
+            </span>
+
+            <span id="clock">
+                00:00
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
